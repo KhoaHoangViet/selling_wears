@@ -5,5 +5,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get static_pages_home_url
     assert_response :success
   end
+  # should render image, can change page when click to a button
 
 end
