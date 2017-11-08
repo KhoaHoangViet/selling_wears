@@ -2,8 +2,8 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
   def setup
-    @product = Product.new(name: "Kimono Sleeve Shirt", lable: "office-wear", 
-      price: 123)
+    @product = Product.new(code: "XYZ-1234", name: "Kimono Sleeve Shirt", 
+      lable: "shirt", price: 10.80, img_url: "XYZ-1234_Kimono_Sleeve_Shirt.jpg")
   end
 
   test "should be valid" do
@@ -15,7 +15,17 @@ class ProductTest < ActiveSupport::TestCase
     assert_not @product.valid?
   end
 
-  test "name should be uniqueness" do
+  test "name should not be too long" do
+    @product.name = "a" * 51
+    assert_not @product.valid?
+  end
+
+  test "code should be present" do
+    @product.code = ""
+    assert_not @product.valid?
+  end
+
+  test "code should be uniqueness" do
     duplicate_product = @product.dup
     @product.save
     assert_not duplicate_product.valid?
@@ -28,11 +38,6 @@ class ProductTest < ActiveSupport::TestCase
 
   test "price should be present" do
     @product.price = ""
-    assert_not @product.valid?
-  end
-
-  test "name should not be too long" do
-    @product.name = "a" * 51
     assert_not @product.valid?
   end
 

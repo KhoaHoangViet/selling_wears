@@ -1,8 +1,7 @@
 <main id="product-show">
- 
   <!-- Left Column / Wears Image -->
   <div class="left-column img-responsive">
-      <%= image_tag("products/1.jpg") %>
+      <%= image_tag("products/"+@product.img_url) %>
   </div>
  
   <!-- Right Column -->
@@ -12,6 +11,7 @@
     <div class="product-description">
       <span><%= @product.lable %></span>
       <h1><%= @product.name %></h1>
+      <h2><%= @product.code %></h2>
       <hr>
       <ul>
         <li>Buttoned down shirt</li>
