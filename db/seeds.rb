@@ -14,3 +14,6 @@ Product.create! code: "XYZ-1847", name: "Abstract Print Strappy", lable: "dress"
   price: 50.00, img_url: "XYZ-1847_Abstract_Print_Strappy_Dress.jpg"  
 Product.create! code: "XYZ-1877", name: "Floral Neck Tie", lable: "dress", 
   price: 50.00, img_url: "XYZ-1877_Floral_Neck_Tie_Dress.jpg"
+
+User.create! name: "Example User", email: "example@railstutorial.org",
+  password: "foobar", password_confirmation: "foobar"
