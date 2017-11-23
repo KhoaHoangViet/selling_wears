@@ -16,4 +16,12 @@ Product.create! code: "XYZ-1877", name: "Floral Neck Tie", lable: "dress",
   price: 50.00, img_url: "XYZ-1877_Floral_Neck_Tie_Dress.jpg"
 
 User.create! name: "Example User", email: "example@railstutorial.org",
-  password: "foobar", password_confirmation: "foobar"
+  password: "foobar", password_confirmation: "foobar", admin: true
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(name:  name, email: email, password: password, 
+    password_confirmation: password)
+end
