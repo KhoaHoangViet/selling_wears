@@ -1,4 +1,12 @@
 module SessionsHelper
+  # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in to continue use."
+        redirect_to login_url
+      end
+    end
 
   # Logs in the given user.
   def log_in(user)
