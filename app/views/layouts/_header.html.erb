@@ -4,7 +4,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Products", products_path %></li>
-        <li><%= link_to "Categories", '#' %></li>
+        <li><%= link_to "Categories", "#" %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", users_path %></li>
           <li class="dropdown">
@@ -23,10 +23,8 @@
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
-        <li>
-          <form>
-            <input type="text" class="search_box" placeholder="Search...">
-          </form>
+        <li class="search_box">
+          <%= render "layouts/search"%>
         </li>
       </ul>
     </nav>
