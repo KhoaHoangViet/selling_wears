@@ -1,0 +1,31 @@
+<div class="container text-center">    
+  <h1>Categories</h1><br>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= link_to image_tag("static_pages/pants.jpg"), categories_pant_path %>
+    </div>
+    <div class="col-sm-3">
+      <%= link_to image_tag("static_pages/shirt.jpg"), categories_shirt_path %>
+    </div>
+    <div class="col-sm-3">
+      <%= link_to image_tag("static_pages/dress.jpg"), categories_dress_path %>
+    </div>
+    <div class="col-sm-3">
+      <%= link_to image_tag("static_pages/vest.jpg"), categories_vest_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <h3><%= link_to "Pants", categories_pant_path %></h3>
+    </div>
+    <div class="col-sm-3">
+      <h3><%= link_to "Shirts", categories_shirt_path %></h3>
+    </div>
+    <div class="col-sm-3">
+      <h3><%= link_to "Dresses", categories_dress_path %></h3>
+    </div>
+    <div class="col-sm-3">
+      <h3><%= link_to "Vests", categories_vest_path %></h3>
+    </div>
+  </div>
+</div>

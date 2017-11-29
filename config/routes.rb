@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:create, :update, :destroy]
   resources :orders
+  resources :categories, only: [:index]
   get "carts", to: "carts#index"
   get "/signup", to: "users#new"
   get "/login", to: "sessions#new"
