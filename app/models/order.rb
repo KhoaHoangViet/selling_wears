@@ -4,5 +4,4 @@ class Order < ApplicationRecord
 
   DELIVERY_TYPES = ["Courier(DPD)", "Personal collection", "InPost"]
   PAYMENT_TYPES  = ["Cash On Delivery", "Bank Transfer", "Dotpay"]
-
 end

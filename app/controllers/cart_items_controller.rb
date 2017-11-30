@@ -4,8 +4,7 @@ class CartItemsController < ApplicationController
   before_action :logged_in_user
   
   def create
-    @cart.add_product(params)
-    
+    @cart.add_product params[:product] 
     if @cart.save
       redirect_to carts_path
     else
@@ -14,11 +13,12 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    if @cart_item.update(cart_item_params)
-      redirect_to carts_path
+    if @cart_item.update cart_item_params
+      flash[:success] = "Updated cart successfully"
     else
-      redirect_to carts_path
+      flash[:danger] = "Something wrong, try again!"
     end
+    redirect_to carts_path
   end
 
   def destroy
@@ -28,14 +28,14 @@ class CartItemsController < ApplicationController
 
   private
     def current_cart 
-      @current_cart = Cart.find(session[:cart_id])
+      @current_cart = Cart.find session[:cart_id]
     end
     
     def set_cart_item
-      @cart_item = CartItem.find(params[:id])
+      @cart_item = CartItem.find params[:id]
     end
 
     def cart_item_params
-      params.require(:cart_item).permit(:product_id, :cart_id, :quantity)
+      params.require(:cart_item).permit :product_id, :cart_id, :quantity
     end
 end

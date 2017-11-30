@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate page: params[:page]
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find params[:id] 
   end
 
   def new
@@ -16,28 +16,28 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new user_params
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the XYZ Selling Wear Website!"
       redirect_to @user
     else
-      render 'new'
+      render :new
     end
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    @user = User.find params[:id]
+    if @user.update_attributes user_params
       flash[:success] = "Profile updated"
       redirect_to @user
     else
-      render 'edit'
+      render :edit
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
   end
 
   def destroy
@@ -49,18 +49,16 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, 
-        :password_confirmation)
+      params.require(:user).permit :name, :email, :password, 
+        :password_confirmation
     end
 
-    # Confirms the correct user.
     def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      @user = User.find params[:id]
+      redirect_to root_url unless current_user? @user
     end
 
-    # Confirms an admin user.
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+      redirect_to root_url unless current_user.admin?
     end
 end
