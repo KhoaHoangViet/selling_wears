@@ -1,0 +1,14 @@
+AllCops:
+  Exclude:
+    - config/*
+    - config/*/**
+    - db/schema.rb
+    - bin/*
+EmptyMethod:
+  EnforcedStyle: expanded
+SymbolArray:
+  EnforcedStyle: brackets
+Documentation:
+  Enabled: false
+ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
