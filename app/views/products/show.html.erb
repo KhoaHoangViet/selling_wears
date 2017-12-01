@@ -1,33 +1,24 @@
 <main id="product-show">
-  <!-- Left Column / Wears Image -->
   <div class="left-column img-responsive">
       <%= image_tag("products/"+@product.img_url) %>
   </div>
- 
-  <!-- Right Column -->
   <div class="right-column">
- 
-    <!-- Product Description -->
     <div class="product-description">
       <span><%= @product.lable %></span>
       <h1><%= @product.name %></h1>
       <h2><%= @product.code %></h2>
       <hr>
-      <ul>
-        <li>Buttoned down shirt</li>
-        <li>Short Sleeve</li>
-        <li>100% Viscose material</li>
-      </ul>
+      <p><%= @product.description %></p>
     </div>
- 
-    <!-- Product Pricing -->
     <div class="product-price">
       <span><%= @product.price %>$</span>
     </div>
     <div>
       <%= form_for @product, :url => cart_items_path, :html => { :method => :post } do |f|%>
       <%= f.hidden_field :product_id, value: @product.id %>
-      <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
+      <div>
+        <%= f.number_field :quantity, value: 1, class: "form-control text-center", min: 1 %>
+      </div>
       <%= f.submit 'Add to Cart', class: "btn btn-success" %>
       <% end %>
     </div>

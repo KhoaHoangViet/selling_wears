@@ -2,9 +2,10 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
   def setup
-    @product = Product.new(code: 'XYZ-1234', name: 'Kimono Sleeve Shirt',
+    @product = Product.new code: 'XYZ-1234', name: 'Kimono Sleeve Shirt',
                            lable: 'shirt', price: 10.80,
-                           img_url: 'XYZ-1234_Kimono_Sleeve_Shirt.jpg')
+                           img_url: 'XYZ-1234_Kimono_Sleeve_Shirt.jpg',
+                           description: Faker::Lorem.paragraph
   end
 
   test 'should be valid' do

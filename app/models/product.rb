@@ -1,9 +1,10 @@
 class Product < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
-  validates :price, presence: true
   validates :lable, presence: true, length: { maximum: 20 }
   validates :code, presence: true, uniqueness: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 }
+  validates :price, presence: true,
+                    numericality: { greater_than_or_equal_to: 0 }
+  validates :description, presence: true
   has_many :cart_items, dependent: :destroy
 
   def self.search(keyword)
