@@ -1,24 +1,38 @@
-# README
+# Basic selling wears website use Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a basic e-commerce with ruby on rails, online version here: http://selling-wears.herokuapp.com/
 
-Things you may want to cover:
+## Purpose
 
-* Ruby version
+- Practice Extreme Programming software development methodology
+- Study Design Pattern
+- Coding convension in Rails with Rubocop
 
-* System dependencies
+## How to run
 
-* Configuration
+### Ruby and Rails:
 
-* Database creation
+Setup development environment, link here: https://gorails.com/setup
 
-* Database initialization
+### Download and run it:
 
-* How to run the test suite
+Download source code and open terminal inside it
+First, install library:
+```
+$ bundle install
+```
+Create database:
+```
+$ rails db:migrate:reset
+```
+Seed some data to database:
+```
+$ rails db:seed
+```
+Run rails server:
+```
+$ rails server
+```
+Last, open browser to address: "localhost:3000"
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Hope you enjoy it!
