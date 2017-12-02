@@ -11,16 +11,35 @@
       <p><%= @product.description %></p>
     </div>
     <div class="product-price">
-      <span><%= @product.price %>$</span>
+      <span>Price: <%= @product.price %>$</span>
+
     </div>
     <div>
       <%= form_for @product, :url => cart_items_path, :html => { :method => :post } do |f|%>
       <%= f.hidden_field :product_id, value: @product.id %>
-      <div>
-        <%= f.number_field :quantity, value: 1, class: "form-control text-center", min: 1 %>
-      </div>
+      <div class="row">
+        <br>
+        <div class="col-lg-3">
+          <h4><%= f.label :quantity %></h4>
+        </div>
+        <div class="col-lg-5">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </span>
+            <%= f.text_field :quantity, value: 1, min: 1, class: "form-control text-center" %>
+            <span class="input-group-btn">
+              <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                  <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </span>
+          </div>
+        </div>
       <%= f.submit 'Add to Cart', class: "btn btn-success" %>
       <% end %>
     </div>
   </div>
 </main>
+

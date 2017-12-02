@@ -1,16 +1,18 @@
 <main class="row">
   <div class="col-lg-12">
-    <h3>Products</h3>
+    <div class="col-lg-3">
+      <h1>Products(<%= @products.count %>)</h1>
+    </div>
     <hr>
   </div>
   <div class="col-lg-3">
-    <h3>Categories</h3>
+    <!-- for filter -->
   </div>
   <div class="col-lg-9 some-product">
     <% @products.each do |product| %>
       <div class="col-lg-6">
         <div class="product-img">
-          <%= link_to image_tag("products/"+product.img_url), product %> 
+          <%= link_to image_tag("products/"+product.img_url), product %>
         </div>
         <div class="info">
           <span class="product-name"><%= link_to product.name, product %></span>

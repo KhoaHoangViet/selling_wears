@@ -11,19 +11,20 @@
     </ul>
   </div>
   <% end %>
+  <div class="form-group">
+    <%= f.label :delivery_address %>
+    <%= f.text_field :delivery_address, placeholder: 'Give us your address',
+      class: 'form-control' %>
 
-  <%= f.label :delivery_address %>
-  <%= f.text_area :delivery_address, rows: 3, cols: 25, class: 'form-control' %>
+    <%= f.label :delivery_type %>
+    <%= f.select :delivery_type, options_for_select(Order::DELIVERY_TYPES), {prompt: '[Select a delivery method]'}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
 
-  <%= f.label :delivery_type %>
-  <%= f.select :delivery_type, Order::DELIVERY_TYPES,
-                  prompt: 'Select a delivery method', class: 'form-control' %>
+    <%= f.label :payment_type %>
+    <%= f.select :payment_type, options_for_select(Order::PAYMENT_TYPES), {prompt: '[Select a payment method]'}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
 
-  <%= f.label :payment_type %>
-  <%= f.select :payment_type, Order::PAYMENT_TYPES,
-                  prompt: 'Select a payment method', class: 'form-control' %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :cart_id, value: current_cart.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :cart_id, value: current_cart.id %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
 <% end %>
