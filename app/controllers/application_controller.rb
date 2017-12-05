@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     return if session[:cart_id].nil?
-    Cart.find session[:cart_id]
+    Cart.find_by id: session[:cart_id]
   end
 end
