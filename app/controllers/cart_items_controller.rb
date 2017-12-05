@@ -28,12 +28,8 @@ class CartItemsController < ApplicationController
 
   private
 
-  def current_cart
-    @current_cart = Cart.find_by id: session[:cart_id]
-  end
-
   def set_cart_item
-    @cart_item = @current_cart.cart_items.find_by id: params[:id]
+    @cart_item = current_cart.cart_items.find_by id: params[:id]
   end
 
   def cart_item_params
