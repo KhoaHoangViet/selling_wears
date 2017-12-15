@@ -13,11 +13,19 @@ This is a basic e-commerce with ruby on rails, online version here: http://selli
 ### Ruby and Rails:
 
 Setup development environment, link here: https://gorails.com/setup
+Install PostgreSQL also is requied.
 
 ### Download and run it:
 
-Download source code and open terminal inside it
-First, install library:
+Download source code and open terminal inside it:
+```
+$ cd selling-wears
+```
+First, rename database.yml.example to database.yml
+```
+$ mv config/database.yml.example config/database.yml
+```
+Then install library:
 ```
 $ bundle install
 ```
