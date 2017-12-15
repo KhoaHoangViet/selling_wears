@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20171201164624) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
     t.integer "product_id"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20171201164624) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "cart_item_id"
+    t.bigint "order_id"
+    t.bigint "cart_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_item_id"], name: "index_order_items_on_cart_item_id"
@@ -38,8 +41,8 @@ ActiveRecord::Schema.define(version: 20171201164624) do
     t.string "delivery_address"
     t.string "delivery_type"
     t.string "payment_type"
-    t.integer "cart_id"
-    t.integer "user_id"
+    t.bigint "cart_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
@@ -68,4 +71,8 @@ ActiveRecord::Schema.define(version: 20171201164624) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "order_items", "cart_items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "users"
 end
